@@ -59,7 +59,7 @@ def _chunk_actions(actions, chunk_size, max_chunk_bytes, serializer):
             cur_size += len(data) + 1
 
         # full chunk, send it and start a new one
-        if bulk_actions and (size + cur_size > max_chunk_bytes or action_count == chunk_size):
+        if bulk_actions and (size + cur_size > max_chunk_bytes or action_count == int(chunk_size)):
             yield bulk_actions
             bulk_actions = []
             size, action_count = 0, 0
